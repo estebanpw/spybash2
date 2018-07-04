@@ -1,0 +1,18 @@
+=======================================Spy Bash 2 =============================================
+
+Dear benchmarker,
+
+this is free software developed in my free time. Do not expect
+too much from it! It might contain bugs. However, if you still
+want to use it, check the help below:
+
+Command			Action
+spy log user@host	Connects through ssh to a desired host. Private keys MUST be available!
+spy on/off 		Turns on logging of executions
+spy show		Shows logged executions
+spy refresh <v>		If spy show is on, refresh execution status every v seconds
+spy out			Exits the program
+
+Have fun executing!
+Blueberry		
+===============================================================================================
