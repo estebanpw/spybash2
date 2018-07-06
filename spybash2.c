@@ -3,7 +3,7 @@
 #include <string.h>
 #include <unistd.h>
 
-#include <pty.h>
+#include <util.h>
 #include <termios.h>
 #include <fcntl.h>
 
@@ -30,22 +30,14 @@ int main(){
     char command[MAX_CMD];
     command[0] = '\0';
 
-
+    fgets(command, MAX_CMD, stdin);
     while(strncmp(command, "spy out", 7) != 0){
-
-        fgets(command, MAX_CMD, stdin);
-
-                
-        if(strncmp(command, "spy help", 7) == 0){
+        if(strncmp(command, "spy help", 8) == 0){
             fprintf(stdout, "%s\n\n", info);
         }
 
-        else if(command[0] != '\0' && command[0] != '\n'){
-            fprintf(stdout, "Unrecognized command. Use 'spy help' for a list of commands\n");
-        }
-
         // Log with credentials
-        if(strncmp(command, "spy log", 7) == 0){
+        else if(strncmp(command, "spy log", 7) == 0){
 
             int master;
             pid_t pid;
@@ -119,7 +111,12 @@ int main(){
                     }
                 }
             }
+        }else{
+            
+            fprintf(stdout, "Unrecognized command. Use 'spy help' for a list of commands\n");
+        
         }
+        fgets(command, MAX_CMD, stdin);
     }
     return 0;
 }
